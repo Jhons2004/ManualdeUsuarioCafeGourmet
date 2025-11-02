@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manual de Usuario - Sistema Café Gourmet</title>
+  <style>
+    :root{
+      --bg:#ffffff; /* blanco */
+      --panel:#ffffff; /* panel claro */
+      --muted:#64748b; /* slate-500/600 */
+      --text:#111827; /* gray-900 */
+      --brand:#0ea5e9; /* sky-500 por defecto; reemplace por su color corporativo */
+      --accent:#10b981; /* emerald-500 */
+      --accent-2:#3b82f6; /* blue-500 */
+      --warn:#f59e0b; /* amber-500 */
+      --danger:#ef4444; /* red-500 */
+      --link:var(--brand); /* color de enlaces = marca */
+      --border:#e5e7eb; /* gray-200 */
+      --card:#ffffff; /* tarjetas claras */
+    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;line-height:1.6}
+    .container{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+    header{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px 20px 16px;margin-bottom:24px;display:flex;gap:16px;align-items:center}
+    .brand-logo{height:56px;width:auto;border-radius:8px;border:1px solid var(--border)}
+    .header-content{flex:1}
+    header h1{margin:0 0 6px;font-size:28px;letter-spacing:.3px}
+    header p{margin:0;color:var(--muted)}
+    .meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;color:var(--muted);font-size:14px}
+    .badge{display:inline-block;background:color-mix(in oklab, var(--brand) 15%, white);color:#0b3a4a;border:1px solid color-mix(in oklab, var(--brand) 25%, white);padding:2px 8px;border-radius:999px;font-size:12px}
+
+    nav#toc{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin:18px 0}
+    #toc h2{margin:0 0 12px;font-size:18px}
+    #toc a{color:var(--link);text-decoration:none}
+    #toc a:hover{text-decoration:underline}
+    #toc ul{margin:0 0 4px 18px;padding:0}
+
+  h2{margin-top:28px;border-bottom:2px solid color-mix(in oklab, var(--brand) 20%, var(--border));padding-bottom:6px}
+    h3{margin-top:20px;color:#334155}
+    p, li{color:var(--text)}
+    code, pre{background:#f8fafc;border:1px solid var(--border);border-radius:8px}
+    code{padding:2px 6px}
+    pre{padding:12px;overflow:auto}
+
+    .callout{border-left:4px solid var(--accent);background:rgba(16,185,129,.08);padding:10px 12px;border-radius:8px;margin:8px 0;color:#065f46}
+    .note{border-left:4px solid var(--warn);background:rgba(245,158,11,.08);color:#7c2d12}
+
+    table{width:100%;border-collapse:collapse;margin:14px 0;border:1px solid var(--border);background:var(--panel)}
+    th, td{border:1px solid var(--border);padding:10px 12px;text-align:left}
+    th{background:#f8fafc;color:#111827}
+    tr:nth-child(even){background:#fafafa}
+
+    .footer{margin-top:40px;color:var(--muted);font-size:14px}
+    .small{font-size:13px;color:var(--muted)}
+    .section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 16px;margin-top:14px}
+    .list-tight li{margin:2px 0}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;border:1px solid var(--border);background:#f8fafc;padding:1px 6px;border-radius:6px}
+  a{color:var(--link)}
+  a:visited{color:color-mix(in oklab, var(--link) 80%, purple)}
+  a:hover{text-decoration:underline}
+
+    @media print {
+      header, nav#toc, .section, table, th, td { box-shadow:none; }
+      a { color:#0b5ed7; text-decoration:underline; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img class="brand-logo" src="logo.png" alt="Logo Café Gourmet" onerror="this.style.display='none'" />
+      <div class="header-content">
+        <h1>Manual de Usuario — Sistema de Gestión Empresarial Café Gourmet</h1>
+        <p>Guía práctica para el uso de los módulos de Inventario, Compras, Producción, Calidad, Ventas, Trazabilidad, Stock, Finanzas, Reportes y Configuración.</p>
+        <div class="meta">
+          <span><strong>Versión:</strong> 1.0</span>
+          <span><strong>Fecha:</strong> 01/11/2025</span>
+          <span><strong>Autor:</strong> Equipo de Proyecto Café Gourmet</span>
+          <span class="badge">Marca</span>
+        </div>
+      </div>
+    </header>
+
+    <nav id="toc">
+      <h2>Índice</h2>
+      <ul>
+        <li><a href="#s1">1. Introducción</a></li>
+        <li><a href="#s2">2. Acceso al sistema</a>
+          <ul>
+            <li><a href="#s2-1">2.1. Inicio de sesión</a></li>
+            <li><a href="#s2-2">2.2. Cerrar sesión</a></li>
+          </ul>
+        </li>
+        <li><a href="#s3">3. Navegación general</a></li>
+        <li><a href="#s4">4. Roles y permisos</a></li>
+        <li><a href="#s5">5. Módulos del sistema</a>
+          <ul class="list-tight">
+            <li><a href="#s5-1">5.1. Inventario de Granos</a></li>
+            <li><a href="#s5-2">5.2. Compras</a></li>
+            <li><a href="#s5-3">5.3. Producción</a></li>
+            <li><a href="#s5-4">5.4. Control de Calidad</a></li>
+            <li><a href="#s5-5">5.5. Ventas</a></li>
+            <li><a href="#s5-6">5.6. Trazabilidad</a></li>
+            <li><a href="#s5-7">5.7. Stock de Productos Terminados</a></li>
+            <li><a href="#s5-8">5.8. Finanzas</a></li>
+            <li><a href="#s5-9">5.9. Reportes</a></li>
+            <li><a href="#s5-10">5.10. Configuración</a></li>
+          </ul>
+        </li>
+        <li><a href="#s6">6. Atajos, búsqueda y usabilidad</a></li>
+        <li><a href="#s7">7. Mensajes y estados del sistema</a></li>
+        <li><a href="#s8">8. Errores frecuentes y cómo resolverlos</a></li>
+        <li><a href="#s9">9. Preguntas frecuentes (FAQ)</a></li>
+        <li><a href="#s10">10. Soporte</a></li>
+        <li><a href="#s11">11. Glosario</a></li>
+        <li><a href="#s12">12. Control de versiones del manual</a></li>
+      </ul>
+    </nav>
+
+    <section id="s1" class="section">
+      <h2>1. Introducción</h2>
+      <p>Este manual explica cómo usar el sistema Café Gourmet de forma práctica. Está dirigido a usuarios finales con roles de Administrador, Gerente y Operador. Cubre el acceso, la navegación general y las operaciones de cada módulo: Inventario, Compras, Producción, Calidad, Ventas, Trazabilidad, Stock de Productos, Finanzas, Reportes y Configuración.</p>
+    </section>
+
+    <section id="s2" class="section">
+      <h2>2. Acceso al sistema</h2>
+      <ul>
+        <li><strong>Frontend (app):</strong> <a href="http://localhost:5173/" target="_blank" rel="noopener">http://localhost:5173/</a></li>
+        <li><strong>API (backend):</strong> <a href="http://127.0.0.1:3000/" target="_blank" rel="noopener">http://127.0.0.1:3000/</a></li>
+        <li><strong>Navegadores soportados:</strong> Chrome, Firefox, Edge (última versión)</li>
+        <li><strong>Requisitos:</strong> Conexión a la red interna y usuario habilitado</li>
+      </ul>
+
+      <h3 id="s2-1">2.1. Inicio de sesión</h3>
+      <ol>
+        <li>Abra <a href="http://localhost:5173/" target="_blank" rel="noopener">http://localhost:5173/</a></li>
+        <li>Ingrese su correo y contraseña</li>
+        <li>Presione <span class="kbd">Entrar</span></li>
+        <li>Si las credenciales son válidas, se mostrará el menú principal</li>
+      </ol>
+      <div class="callout">
+        <p><strong>Notas:</strong> El sistema recuerda la sesión (localStorage). Si cierra y vuelve a abrir el navegador, permanecerá dentro hasta cerrar sesión. En caso de contraseña olvidada, use “¿Olvidaste tu contraseña?” para iniciar el proceso de recuperación.</p>
+      </div>
+
+      <h3 id="s2-2">2.2. Cerrar sesión</h3>
+      <p>Menú superior derecho → <em>Salir</em>. Esto limpia su sesión y vuelve al login.</p>
+    </section>
+
+    <section id="s3" class="section">
+      <h2>3. Navegación general</h2>
+      <ul>
+        <li><strong>Barra lateral (izquierda):</strong> módulos del sistema. Se puede colapsar para ganar espacio.</li>
+        <li><strong>Área principal (derecha):</strong> contenido del módulo activo.</li>
+        <li><strong>Buscador rápido:</strong> presione <span class="kbd">Ctrl</span>+<span class="kbd">F</span> para abrir el buscador de módulos; escriba y presione Enter para abrirlos.</li>
+      </ul>
+      <div class="callout note">
+        <p><strong>Sugerencias:</strong> Si el menú lateral está oculto, use el botón de “colapsar / expandir” para mostrarlo. Los mensajes de éxito/error aparecen como alertas en la parte superior de cada panel.</p>
+      </div>
+    </section>
+
+    <section id="s4" class="section">
+      <h2>4. Roles y permisos</h2>
+      <div class="small">Algunas acciones (eliminar usuarios, cambiar roles) son exclusivas de Administrador. Si no ve un módulo o acción, consulte con su Administrador.</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Rol</th>
+            <th>Descripción</th>
+            <th>Acceso principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Administrador</td>
+            <td>Configura usuarios/roles, accede a todos los módulos</td>
+            <td>Todos</td>
+          </tr>
+          <tr>
+            <td>Gerente</td>
+            <td>Gestión operativa y reportes</td>
+            <td>Inventario, Compras, Producción, Calidad, Ventas, Trazabilidad, Stock, Finanzas, Reportes</td>
+          </tr>
+          <tr>
+            <td>Operador</td>
+            <td>Operaciones del día a día</td>
+            <td>Inventario, Compras (recepciones), Producción, Calidad, Ventas, Trazabilidad, Stock</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="s5" class="section">
+      <h2>5. Módulos del sistema (paso a paso)</h2>
+      <p>A continuación, las tareas más comunes por módulo. Los nombres de botones y campos pueden variar levemente según su configuración.</p>
+
+      <h3 id="s5-1">5.1. Inventario de Granos</h3>
+      <p><strong>Acceso:</strong> Menú → “Inventario”</p>
+      <ol>
+        <li><strong>Registrar grano:</strong> “Nuevo / Registrar” → Complete Tipo (arabica, robusta), Cantidad (kg), Proveedor → Guardar</li>
+        <li><strong>Consultar inventario:</strong> la tabla muestra el stock actual por tipo de grano</li>
+        <li><strong>Editar cantidad:</strong> Seleccione un registro → “Editar” → nueva cantidad → Guardar</li>
+        <li><strong>Eliminar registro:</strong> (si su rol lo permite) Seleccione → “Eliminar” → Confirmar</li>
+      </ol>
+      <div class="callout"><strong>Buenas prácticas:</strong> use cantidades positivas y unidades correctas; verifique el proveedor antes de guardar.</div>
+
+      <h3 id="s5-2">5.2. Compras (Proveedores, Órdenes, Recepciones)</h3>
+      <p><strong>Acceso:</strong> Menú → “Compras”</p>
+      <ul>
+        <li><strong>Proveedores:</strong> Alta/edición/baja de proveedores</li>
+        <li><strong>Órdenes de Compra (OC):</strong> Crear, aprobar y consultar</li>
+        <li><strong>Recepciones:</strong> Registrar mercancía recibida; actualiza inventario</li>
+      </ul>
+      <ol>
+        <li><strong>Crear proveedor:</strong> “Proveedores” → “Nuevo” → Complete (Nombre, RUC/NIT, Contacto, Teléfono, Dirección, Email) → Guardar</li>
+        <li><strong>Crear orden de compra:</strong> “Órdenes” → “Nueva OC” → agregue ítems (Tipo de grano, Cantidad, Precio unitario) → Guardar</li>
+        <li><strong>Registrar recepción:</strong> “Recepciones” → “Nueva Recepción” → Seleccione la OC → Asigne lotes (cantidad recibida, humedad, fecha cosecha) → Guardar</li>
+      </ol>
+
+      <h3 id="s5-3">5.3. Producción</h3>
+      <p><strong>Acceso:</strong> Menú → “Producción”</p>
+      <ol>
+        <li><strong>Nueva OP:</strong> Seleccione producto objetivo; defina receta (p.ej., arabica 70%, robusta 30%) → Guardar</li>
+        <li><strong>Registrar etapas:</strong> Tostado → Molido → Empaquetado (ingrese parámetros y cantidades) → Guardar</li>
+        <li><strong>Completar OP:</strong> el sistema descuenta granos y genera stock de producto terminado</li>
+      </ol>
+
+      <h3 id="s5-4">5.4. Control de Calidad (Calidad)</h3>
+      <p><strong>Acceso:</strong> Menú → “Calidad”</p>
+      <ul>
+        <li><strong>QC Recepciones:</strong> calidad al recibir granos (sensorial, humedad; Aprobado/Rechazado)</li>
+        <li><strong>QC Proceso:</strong> controles durante la producción (parámetros tostado/molido)</li>
+        <li><strong>No Conformidades (NC):</strong> registrar motivo, acciones y seguimiento hasta cierre</li>
+      </ul>
+
+      <h3 id="s5-5">5.5. Ventas (Clientes, Pedidos, Facturas)</h3>
+      <p><strong>Acceso:</strong> Menú → “Ventas”</p>
+      <ol>
+        <li><strong>Clientes:</strong> alta/edición/baja</li>
+        <li><strong>Nuevo Pedido:</strong> Seleccione cliente → agregue ítems con selector de productos (elegir del dropdown) → verifique totales → Guardar</li>
+        <li><strong>Facturar:</strong> desde el pedido → “Facturar” → revise impuestos y totales → Guardar</li>
+      </ol>
+      <div class="callout note"><strong>Nota:</strong> Si recibe un error de validación, verifique que el producto haya sido seleccionado del listado.</div>
+
+      <h3 id="s5-6">5.6. Trazabilidad</h3>
+      <p><strong>Acceso:</strong> Menú → “Trazabilidad”</p>
+      <ol>
+        <li>Elija “Por Lote” o “Por OP”</li>
+        <li>Ingrese el valor y presione “Buscar”</li>
+        <li>Revise el <em>timeline</em> cronológico con eventos: Recepción (azul), QC Recepciones (verde/rojo), Producción (naranja), QC Proceso (verde/rojo), Pedido/Despacho (morado)</li>
+        <li>Desplácese para ver el recorrido completo</li>
+      </ol>
+      <div class="small">El color del ícono indica el tipo/estado del evento. Las tarjetas muestran fecha, responsable y referencias.</div>
+
+      <h3 id="s5-7">5.7. Stock de Productos Terminados</h3>
+      <p><strong>Acceso:</strong> Menú → “Stock Productos”</p>
+      <ul>
+        <li><strong>KPIs:</strong> Total de productos, Activos, Bajo stock, Stock total</li>
+        <li><strong>Tabla de inventario</strong> de productos terminados</li>
+        <li><strong>Movimientos manuales:</strong> Entrada (aumenta), Salida (disminuye), Ajuste</li>
+      </ul>
+      <ol>
+        <li>“Registrar Movimiento”</li>
+        <li>Seleccione el producto</li>
+        <li>Tipo: Entrada / Salida / Ajuste</li>
+        <li>Cantidad, Motivo, Referencia (opcional)</li>
+        <li>“Registrar”</li>
+      </ol>
+      <div class="small">Los productos con stock bajo se resaltan visualmente. Verifique unidades (kg, unidades) según su catálogo.</div>
+
+      <h3 id="s5-8">5.8. Finanzas</h3>
+      <p><strong>Acceso:</strong> Menú → “Finanzas”</p>
+      <ul>
+        <li>Registrar ingresos y gastos</li>
+        <li>Consultar flujo de caja</li>
+        <li>Revisar saldos y reportes financieros básicos</li>
+      </ul>
+      <div class="small">Las opciones específicas dependen de la configuración habilitada en su instancia.</div>
+
+      <h3 id="s5-9">5.9. Reportes</h3>
+      <p><strong>Acceso:</strong> Menú → “Reportes”</p>
+      <ul>
+        <li>Ver métricas clave de inventario, producción, ventas y calidad</li>
+        <li>Filtrar por fechas</li>
+        <li>Exportar (si está disponible)</li>
+      </ul>
+
+      <h3 id="s5-10">5.10. Configuración (Usuarios, Preferencias)</h3>
+      <p><strong>Acceso:</strong> Menú → “Config”</p>
+      <ol>
+        <li><strong>Usuarios:</strong>
+          <ul>
+            <li>Crear usuario: nombre, email, rol, contraseña (≥ 8 caract.) → Guardar</li>
+            <li>Cambiar rol: seleccione usuario → “Editar rol” → Guardar</li>
+            <li>Eliminar usuario: solo Administrador</li>
+          </ul>
+        </li>
+        <li><strong>Preferencias de UI:</strong> Tema (Claro/Oscuro), paleta de colores, carga de logo (PNG/JPG)</li>
+        <li><strong>Seguridad:</strong> Acciones protegidas requieren autenticación JWT; si su sesión expira, vuelva a iniciar sesión</li>
+      </ol>
+    </section>
+
+    <section id="s6" class="section">
+      <h2>6. Atajos, búsqueda y usabilidad</h2>
+      <ul>
+        <li><span class="kbd">Ctrl</span>+<span class="kbd">F</span>: abre el buscador de módulos</li>
+        <li>Menú colapsable: útil en pantallas pequeñas</li>
+        <li>Formularios: campos obligatorios marcados con *</li>
+        <li>Feedback: mensajes verdes (éxito), rojos (error), naranjas/amarillos (alertas)</li>
+      </ul>
+    </section>
+
+    <section id="s7" class="section">
+      <h2>7. Mensajes y estados del sistema</h2>
+      <ul>
+        <li>Éxito: “Operación realizada correctamente”</li>
+        <li>Error de validación: revise campos requeridos/formato</li>
+        <li>Error de autenticación: sesión expirada o credenciales inválidas</li>
+        <li>Vacíos: cuando no hay datos, se muestran mensajes guía</li>
+      </ul>
+    </section>
+
+    <section id="s8" class="section">
+      <h2>8. Errores frecuentes y cómo resolverlos</h2>
+      <table>
+        <thead>
+          <tr><th>Situación</th><th>Causa probable</th><th>Solución</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>No puedo iniciar sesión</td>
+            <td>Credenciales incorrectas o sesión expirada</td>
+            <td>Verifique email/contraseña. Si persiste, recupere contraseña o contacte al Admin.</td>
+          </tr>
+          <tr>
+            <td>No veo algunos módulos</td>
+            <td>Falta de permisos según rol</td>
+            <td>Solicite al Administrador revisión de su rol.</td>
+          </tr>
+          <tr>
+            <td>Error al crear pedido</td>
+            <td>Producto no seleccionado desde el dropdown</td>
+            <td>Asegúrese de elegir un producto del listado (no texto libre).</td>
+          </tr>
+          <tr>
+            <td>Contraseña rechazada</td>
+            <td>Longitud mínima no cumplida</td>
+            <td>Use al menos 8 caracteres.</td>
+          </tr>
+          <tr>
+            <td>Stock no actualiza</td>
+            <td>Falta registrar la recepción / movimiento</td>
+            <td>Revise el flujo completo (recepción → inventario) o registre el movimiento manual.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="s9" class="section">
+      <h2>9. Preguntas frecuentes (FAQ)</h2>
+      <p><strong>¿Puedo recuperar mi contraseña?</strong><br/>Sí, desde la pantalla de login use “¿Olvidaste tu contraseña?”.</p>
+      <p><strong>¿Cómo busco una trazabilidad específica?</strong><br/>En el módulo Trazabilidad, elija “Por Lote” o “Por OP”, ingrese el valor y presione “Buscar”.</p>
+      <p><strong>¿Por qué no puedo eliminar un usuario?</strong><br/>Solo los Administradores tienen permiso de eliminación.</p>
+      <p><strong>¿Se guarda mi sesión?</strong><br/>Sí, hasta que cierre sesión o el token expire.</p>
+    </section>
+
+    <section id="s10" class="section">
+      <h2>10. Soporte</h2>
+      <ul>
+        <li>Documentación: carpeta <code>Documentación/</code></li>
+        <li>Reporte de incidencias: GitHub Issues (etiqueta <code>bug</code>)</li>
+        <li>Contacto interno: Responsable de TI / Administrador del sistema</li>
+      </ul>
+    </section>
+
+    <section id="s11" class="section">
+      <h2>11. Glosario</h2>
+      <ul class="list-tight">
+        <li><strong>OC:</strong> Orden de Compra</li>
+        <li><strong>OP:</strong> Orden de Producción</li>
+        <li><strong>QC:</strong> Control de Calidad</li>
+        <li><strong>NC:</strong> No Conformidad</li>
+        <li><strong>JWT:</strong> JSON Web Token</li>
+        <li><strong>KPI:</strong> Indicador clave de desempeño</li>
+      </ul>
+    </section>
+
+    <section id="s12" class="section">
+      <h2>12. Control de versiones del manual</h2>
+      <ul>
+        <li>v1.0 (01/11/2025): Primera versión alineada con los módulos actuales</li>
+      </ul>
+    </section>
+
+    <div class="footer">© 2025 Café Gourmet — Manual de Usuario. <span class="small">Este documento puede actualizarse conforme evolucionen los módulos del sistema.</span></div>
+  </div>
+</body>
+</html>
